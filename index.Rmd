@@ -411,7 +411,7 @@ terms_df %>% select(-9, -10) %>% head(.)
 
 .pull-right[
 
-<img src= "images/diet_kurtosis.png", style="width:100%">
+<img src= "images/diet_ridge.png", style="width:100%">
 ]
 
 ???
@@ -433,18 +433,48 @@ Join the text info to data from other sources such as body size to get an idea o
 
 ## Habitat
 
+???
+- determines what animals can survive
+- what prey there is availablie
+- how animals interact with environmnt/ each other
+- dense jungle = hard to move through = smaller animals do better = prey available is smaller
 
 ---
 
 ## Habitat data 
 
-.center[
-<img src= "images/google_earth_engine.png", style="width:100%">
+.pull-left[
+<img src= "images/modistools.png", style="width:80%">
+
+]
+
+.pull-right[
+<iframe src="https://giphy.com/embed/1xkMJIvxeKiDS" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+]
+
+
+---
+## Habitat data
+
+
+
+.pull-left[
+<img src= "images/gee.png", style="width:100%">
+
+- Google Earth Engine
+- Powerful geospatial processing
+- JavaScript API
+]
+
+.pull-right[
+<iframe src="https://giphy.com/embed/O4iHao95NsDaE" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+Speedy once you know what you are doing
 ]
 
 ---
 
-## Structural Equation Model
+## Synthesis with SEM
 
 .center[
 <img src= "images/sem_out_diagram.png", style="width:100%">
