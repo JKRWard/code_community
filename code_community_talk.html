@@ -11,7 +11,7 @@
 class: center, middle, inverse, title-slide
 
 # Code community: Modelling sociality in carnivores
-## slides found at link
+## slides: jkrward.github.io/code_community
 ### 25/09/19
 
 ---
@@ -46,10 +46,23 @@ class: center, middle, inverse, title-slide
 # Social carnivores
 
 
+???
+
+- Sociality is well studied, we know lots about lots of differnt behaviours
+- still laking info on broad scale factors
+- differences within species e.g. badgers
+- betweeen species, meerkats and mongoose
+
+-lions and tigers
+
 ---
 class: inverse, center, middle
 
 # Why be social?
+
+???
+
+sociality only persists if benefits outweigh costs
 
 ---
 ##  Decreased predation risk
@@ -58,9 +71,7 @@ class: inverse, center, middle
 &lt;iframe src="https://giphy.com/embed/xmz2JEFmNsGru" width="580" height="580" frameBorder="0" class="giphy-embed" allowFullScreen&gt;&lt;/iframe&gt;
 &lt;/center&gt;
 
-???
 
-these are my notes 
 ---
 ##  Increased prey capture
 
@@ -105,6 +116,12 @@ these are my notes
 ---
 # Diet and feeding
 
+???
+Diet is source of energy - important driver of behaviours
+- data often species specific
+- no money/ not enough time to go collect this data for all species
+- how to make use of existing information
+
 
 ---
 
@@ -121,19 +138,33 @@ these are my notes
 &lt;img src= "images/motw_scan.png", style="width:100%"&gt;
 ]
 
+???
 
+- lots of info in texts like this
+- species descriptions, collated from lots of dfferent studies/sources
 ---
 
 .center[
 &lt;img src= "images/text_zoomed.png", style="width:70%"&gt;
 ]
 
+???
+- info on habitat preferences and feeding preferences
+- often anecdotal and descriptive
+- how can we use this
 ---
 
 # Digitizing the information
 .center[
 &lt;img src= "images/motw_scan.png", style="width:100%"&gt;
 ]
+
+???
+- no digital copy 
+-scan bits - only small chunks so ok on copyright front
+- book too thick to scan
+- no hand scanner
+
 ---
 
 # Digitizing the information
@@ -151,6 +182,13 @@ these are my notes
 &lt;img src= "images/package.png", style="width:100%"&gt;
  
 ]
+
+???
+
+-take picture
+-run through adobe scanner - scans to pdf
+- import to R
+- tesseract package for OCR to give digitized text that I can use
 
 ---
 # Digitizing the information 
@@ -190,6 +228,11 @@ clouded_leopard &lt;- tesseract::ocr(clouded_leopard.pdf)
 ## 6 Alexanders c~ Lowland 21nd montanc rain~ . Believed to feed on invertebr~
 ```
 
+???
+
+- get text strings - not perfect but pretty good 
+- because of standardized format of entries easy to manipulate text to useable format
+
 
 ---
 
@@ -199,12 +242,20 @@ clouded_leopard &lt;- tesseract::ocr(clouded_leopard.pdf)
 &lt;img src= "images/topic_model.png", style="width:100%"&gt;
 ]
 
-
+???
+- texts are descriptive, detail otherwise potentiall missed
+- element of human bias in descriptions, extent of info available
+- topic modelling defines groupings of topics based on the co-occurences of words and the frequency with which the co-occurences arise
 ---
 
 .center[
 &lt;img src= "images/mair_graphic.png", style="width:80%"&gt;
 ]
+
+???
+
+A nice paper on topic modelling to inform conservation planing
+- based on published papers and uses abstracts to identify gaps in research
 
 ---
 ## Topic modelling
@@ -229,15 +280,88 @@ clouded_leopard &lt;- tesseract::ocr(clouded_leopard.pdf)
 
 
 ```
-##     Topic 1 Topic 2 Topic 3   Topic 4 Topic 5 Topic 6 Topic 7  Topic 8
-## 1     found  includ  forest    rodent     may    prey    food     hare
-## 2      bird   small  includ       rat    hunt    kill   beetl     area
-## 3      area     spp    also   habitat   speci    larg stomach      one
-## 4      also  desert    tree     grass     dri leopard  mammal mountain
-## 5      diet   forag lowland grassland   avail   small  termit    studi
-## 6 grassland   occur  report      high    rang   tiger  reptil     hunt
+##   Topic 1 Topic 2  Topic 3 Topic 4   Topic 5 Topic 6 Topic 7 Topic 8
+## 1    area    prey    small     fox    rodent    hare  forest    prey
+## 2     spp     may   desert    food       rat    area    also    kill
+## 3    main    larg     bird   fruit grassland  consum  includ leopard
+## 4    diet    hunt    south  insect     grass     can   found     day
+## 5    rang   water woodland    item       dri    open lowland   tiger
+## 6  includ   often    occur    bird  occasion success suggest     cat
 ```
 
+???
+- simple to do in R using some packages
+- ended up with 106 species accounts
+- contained ~5000 words 
+- topics and words contained within them - some quite useful, identify things that might be missed if we only had list of species eaten by a predator
+- words like prey kill suggest some grouping based on hunting stratey
+
+
+---
+## Document relationships
+
+.center[
+&lt;img src= "images/dendrogram.png", style="width:80%"&gt;
+]
+
+???
+
+- can group species based on highest weighted topic
+
+- take output and assess relatedness of docments through heirarchical clustering beased on topic model outputs
+
+
+---
+
+## Document relationships
+
+.center[
+&lt;img src= "images/dendrogram_zoom.png", style="width:80%"&gt;
+]
+
+- Open savannah habitats
+- chase prey over distance
+
+???
+-some useful groupings
+-not phylogeny becausedogs and cats
+- similar habitat use
+- similar diet - all eat big things
+- similar ish hunting - chase over distances 
+
+---
+
+.pull-left[
+## Diet analyses
+&lt;img src= "images/kurtosis_cats.png", style="width:100%"&gt;
+]
+
+.pull-right[
+
+&lt;img src= "images/diet_kurtosis.png", style="width:100%"&gt;
+]
+
+???
+Join the text info to data from other sources such as body size to get an idea of the size of prey that make up a species diet
+
+- extract list of diet items
+- combine with body size data
+- big or small prey?
+
+- high kurtosis = platykurtic distribution = more spread
+
+- In some groups being social increases the range of diet items that can be eaten
+- start to build up a picture of how diet might impact social behaviours
+
+
+---
+
+## Habitat
+
+
+???
+Topic model uses descriptions - prone to human bias
+-can get other measurements such as leaf area index - gives an idea of density of vegetation - is animal exposed to predators or not
 
 
 ---
