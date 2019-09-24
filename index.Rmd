@@ -432,7 +432,21 @@ Join the text info to data from other sources such as body size to get an idea o
 ## Habitat
 
 
+---
 
+## Habitat data 
+
+.center[
+<img src= "images/google_earth_engine.png", style="width:100%">
+]
+
+---
+
+## Structural Equation Model
+
+.center[
+<img src= "images/sem_out_diagram.png", style="width:100%">
+]
 
 ---
 class: inverse, center, middle
