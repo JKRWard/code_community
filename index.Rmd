@@ -1,0 +1,441 @@
+---
+title: "Code community: Modelling sociality in carnivores"
+subtitle: "slides: jkrward.github.io/code_community"
+date: "25/09/19"
+output:
+ xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+
+```{r xaringan-themer, include = FALSE}
+library(xaringanthemer)
+mono_light(
+  base_color = "#1c5253",
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Droid Mono")
+  
+)
+
+```
+
+## Modelling sociality in carnivores
+
+.pull-left[
+###Jess Ward
+`r icon::fa("twitter")` @JKRWard
+
+###Modelling evidence and Policy group
+
+`r icon::fa("twitter")` @ModEviPol
+<img src= "images/SSI.png", style="width:100%">
+
+]
+
+.pull-right[
+
+
+<img src= "images/logos.png", style="width:100%">
+]
+
+---
+
+# Social carnivores
+
+
+???
+
+- Sociality is well studied, we know lots about lots of differnt behaviours
+- still laking info on broad scale factors
+- differences within species e.g. badgers
+- betweeen species, meerkats and mongoose
+
+-lions and tigers
+
+---
+class: inverse, center, middle
+
+# Why be social?
+
+???
+
+sociality only persists if benefits outweigh costs
+
+---
+##  Decreased predation risk
+
+<center>
+<iframe src="https://giphy.com/embed/xmz2JEFmNsGru" width="580" height="580" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+</center>
+
+
+---
+##  Increased prey capture
+
+<center>
+<iframe src="https://giphy.com/embed/DnLHC6vKyRrgY" width="580" height="580" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+</center>
+
+---
+##  Cooperative rearing of young
+
+<center>
+<iframe src="https://giphy.com/embed/ZvPVEvQWRFPAQ" width="580" height="580" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+</center>
+
+---
+##  Increased visibility to predators
+
+<center>
+<img src= "images/meerkat_group.jpg", style="width:80%">
+</center>
+
+---
+##  Increased visibility to predators
+
+<center>
+<img src= "images/meerkat_eagle.jpg", style="width:80%">
+</center>
+
+---
+##  Increased transmission of disease
+
+<center>
+<img src= "images/disease.jpg", style="width:50%">
+</center>
+
+---
+##  Increased competition
+<center>
+<iframe src="https://giphy.com/embed/uojwNw5G9sWyI" width="480" height="292" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+</center>
+
+---
+# Diet and feeding
+
+???
+Diet is source of energy - important driver of behaviours
+- data often species specific
+- no money/ not enough time to go collect this data for all species
+- how to make use of existing information
+
+
+---
+
+# Extracting information
+
+.pull-left[
+
+<img src= "images/motw_book.jpg", style="width:100%">
+]
+
+
+.pull-right[
+
+<img src= "images/motw_scan.png", style="width:100%">
+]
+
+???
+
+- lots of info in texts like this
+- species descriptions, collated from lots of dfferent studies/sources
+---
+
+.center[
+<img src= "images/text_zoomed.png", style="width:70%">
+]
+
+???
+- info on habitat preferences and feeding preferences
+- often anecdotal and descriptive
+- how can we use this
+---
+
+# Digitizing the information
+.center[
+<img src= "images/motw_scan.png", style="width:100%">
+]
+
+???
+- no digital copy 
+-scan bits - only small chunks so ok on copyright front
+- book too thick to scan
+- no hand scanner
+
+---
+
+# Digitizing the information
+
+.pull-left[
+<img src= "images/tools.png", style="width:100%">
+
+]
+
+.pull-right[
+
+<img src= "images/tesseract.png", style="width:100%">
+ 
+ 
+<img src= "images/package.png", style="width:100%">
+ 
+]
+
+???
+
+-take picture
+-run through adobe scanner - scans to pdf
+- import to R
+- tesseract package for OCR to give digitized text that I can use
+
+---
+# Digitizing the information 
+
+```{r echo = FALSE, warning=FALSE, message=FALSE}
+
+txts <- readr::read_csv(here::here("Data", "all_txt.csv"))
+
+```
+
+
+```{r echo = TRUE, eval = FALSE}
+clouded_leopard <- tesseract::ocr(clouded_leopard.pdf)
+
+# Diardis clouded leopard	 Little is known of its habitat requirements, 
+# but longthought to be strongly associated with primmy evergreen
+# tropical rainforesl up to about 2000 m. However recent reports 
+# suggest its ecological requirements may be more flexible, with 
+# observations of cloudcd leopards in logged forests, degraded 
+# secondary forest, scrub habitats and mangrove swamps.	 A variety of 
+# terrestrial and arboreal vertebrates are reported as prey,but no
+# detailed studies with large sample sizes to date. Prey items known 
+# to include young Sambar, muntjac, mouse deer, Bearded Pig, palm Civet,
+# Hoses Langur (Praclmishnswi). ()mngutan (Pongo). porcupine, birds,
+# and fish. The cats long... 
+
+
+```
+
+--
+
+```{r echo = FALSE}
+head(txts)
+
+```
+
+???
+
+- get text strings - not perfect but pretty good 
+- because of standardized format of entries easy to manipulate text to useable format
+
+
+---
+
+## Topic modelling
+
+.center[
+<img src= "images/topic_model.png", style="width:100%">
+]
+
+???
+- texts are descriptive, detail otherwise potentiall missed
+- element of human bias in descriptions, extent of info available
+- topic modelling defines groupings of topics based on the co-occurences of words and the frequency with which the co-occurences arise
+---
+
+.center[
+<img src= "images/mair_graphic.png", style="width:80%">
+]
+
+???
+
+A nice paper on topic modelling to inform conservation planing
+- based on published papers and uses abstracts to identify gaps in research
+
+---
+## Topic modelling
+
+```{r topic mod setup, echo=FALSE,include=FALSE}
+
+library(readr)
+library(dplyr)
+library(here)
+library(tidyr)
+library(bibliometrix)
+library(tm)
+library(slam)
+library(lme4)
+library(topicmodels)
+#read in data 
+# convert the information for each spcolumns one and three I want to combine the two columns together so that I have one bit of text per species
+#convert the information to a list
+
+
+# the model is running on all of the families for which i have text extracted 
+#from mammals of the world book
+dogtxt <- read_csv(here("Data/all_txt.csv")) %>%
+  select(., `Food and feeding`, Habitat) %>% unite(txt, sep = " ")
+
+dognms <- read_csv(here("Data/all_txt.csv")) %>% select(., Predator)
+dognms <- as.vector(dognms$Predator)
+dogtxt <- as.vector(dogtxt$txt)
+dogtxt <- as.list(dogtxt)
+# convert the list to a corpus
+docs <- Corpus(VectorSource(dogtxt))
+
+# tidy the text
+# transform to lower case
+docs <-tm_map(docs,content_transformer(tolower))
+#writeLines(as.character(docs[[1]]))
+# remove stopwords
+sort(stopwords("english"))
+docs <- tm_map(docs, removeWords, stopwords("english"))
+# Change hyphen and slash to space
+toSpace <- content_transformer(function(x, pattern) { return (gsub(pattern, " ", x))})
+docs <- tm_map(docs, toSpace, "-")
+docs <- tm_map(docs, toSpace, "/")
+# remove punctuation
+docs <- tm_map(docs, removePunctuation)
+# remove numbers
+docs <- tm_map(docs, removeNumbers)
+# remove whitespace
+docs <- tm_map(docs, stripWhitespace)
+#writeLines(as.character(docs[[1]]))
+
+
+# stem the document
+docs <- tm_map(docs,stemDocument)
+#writeLines(as.character(docs[[1]]))
+
+# create document term matrix
+dtm <- DocumentTermMatrix(docs)
+#dim(dtm)
+# Convert rownames to article IDs
+rownames(dtm) <- dognms
+
+
+# remove words occurring in (2?) or fewer documents
+
+## Create binary matrix to count number of articles that each word appears in
+dtmbin <- dtm
+dtmbin[which(apply(dtmbin, 2, function(x) x>=1))] <- 1
+## Have a look at the proportion of words contained in N or fewer articles...
+length(which(col_sums(dtmbin)<=1))/ncol(dtmbin)
+length(which(col_sums(dtmbin)<=2))/ncol(dtmbin)
+length(which(col_sums(dtmbin)<=5))/ncol(dtmbin)
+length(which(col_sums(dtmbin)<=10))/ncol(dtmbin)
+## Remove words occuring in only 5 or fewer documents
+#dtm <- dtm[,-which(col_sums(dtmbin)<=5)]
+dim(dtm)
+
+ntopics <- 10
+tmod <- LDA(dtm, k=ntopics, method="Gibbs", control=list(burnin=1000, thin=100, iter=1000, best=T))
+
+
+terms_df <- as.data.frame(terms(tmod, 10))
+```
+
+.pull-left[
+📦 bibliometrix
+
+📦 slam
+
+📦 tm
+
+📦 topicmodels
+]
+
+.pull-right[
+ `r length(dtm$dimnames$Docs)` "documents" had habitat and feeding information
+ 
+ `r length(dtm$dimnames$Terms)` words were contained in the corpus after stemming
+]
+
+```{r echo = FALSE}
+
+terms_df %>% select(-9, -10) %>% head(.)
+
+```
+
+???
+- simple to do in R using some packages
+- ended up with 106 species accounts
+- contained ~5000 words 
+- topics and words contained within them - some quite useful, identify things that might be missed if we only had list of species eaten by a predator
+- words like prey kill suggest some grouping based on hunting stratey
+
+
+---
+## Document relationships
+
+.center[
+<img src= "images/dendrogram.png", style="width:80%">
+]
+
+???
+
+- can group species based on highest weighted topic
+
+- take output and assess relatedness of docments through heirarchical clustering beased on topic model outputs
+
+
+---
+
+## Document relationships
+
+.center[
+<img src= "images/dendrogram_zoom.png", style="width:80%">
+]
+
+- Open savannah habitats
+- chase prey over distance
+
+???
+-some useful groupings
+-not phylogeny becausedogs and cats
+- similar habitat use
+- similar diet - all eat big things
+- similar ish hunting - chase over distances 
+
+---
+
+.pull-left[
+## Diet analyses
+<img src= "images/kurtosis_cats.png", style="width:100%">
+]
+
+.pull-right[
+
+<img src= "images/diet_kurtosis.png", style="width:100%">
+]
+
+???
+Join the text info to data from other sources such as body size to get an idea of the size of prey that make up a species diet
+
+- extract list of diet items
+- combine with body size data
+- big or small prey?
+
+- high kurtosis = platykurtic distribution = more spread
+
+- In some groups being social increases the range of diet items that can be eaten
+- start to build up a picture of how diet might impact social behaviours
+
+
+---
+
+## Habitat
+
+
+
+
+---
+class: inverse, center, middle
+
+# Get Started
+

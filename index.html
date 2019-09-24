@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Code community: Modelling sociality in carnivores</title>
+    <meta charset="utf-8" />
+    <link href="libs/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Code community: Modelling sociality in carnivores
+## slides: jkrward.github.io/code_community
+### 25/09/19
+
+---
+
+
+
+
+
+
+
+## Modelling sociality in carnivores
+
+.pull-left[
+###Jess Ward
+<i class="fab  fa-twitter "></i> @JKRWard
+
+###Modelling evidence and Policy group
+
+<i class="fab  fa-twitter "></i> @ModEviPol
+&lt;img src= "images/SSI.png", style="width:100%"&gt;
+
+]
+
+.pull-right[
+
+
+&lt;img src= "images/logos.png", style="width:100%"&gt;
+]
+
+---
+
+# Social carnivores
+
+
+???
+
+- Sociality is well studied, we know lots about lots of differnt behaviours
+- still laking info on broad scale factors
+- differences within species e.g. badgers
+- betweeen species, meerkats and mongoose
+
+-lions and tigers
+
+---
+class: inverse, center, middle
+
+# Why be social?
+
+???
+
+sociality only persists if benefits outweigh costs
+
+---
+##  Decreased predation risk
+
+&lt;center&gt;
+&lt;iframe src="https://giphy.com/embed/xmz2JEFmNsGru" width="580" height="580" frameBorder="0" class="giphy-embed" allowFullScreen&gt;&lt;/iframe&gt;
+&lt;/center&gt;
+
+
+---
+##  Increased prey capture
+
+&lt;center&gt;
+&lt;iframe src="https://giphy.com/embed/DnLHC6vKyRrgY" width="580" height="580" frameBorder="0" class="giphy-embed" allowFullScreen&gt;&lt;/iframe&gt;
+&lt;/center&gt;
+
+---
+##  Cooperative rearing of young
+
+&lt;center&gt;
+&lt;iframe src="https://giphy.com/embed/ZvPVEvQWRFPAQ" width="580" height="580" frameBorder="0" class="giphy-embed" allowFullScreen&gt;&lt;/iframe&gt;
+&lt;/center&gt;
+
+---
+##  Increased visibility to predators
+
+&lt;center&gt;
+&lt;img src= "images/meerkat_group.jpg", style="width:80%"&gt;
+&lt;/center&gt;
+
+---
+##  Increased visibility to predators
+
+&lt;center&gt;
+&lt;img src= "images/meerkat_eagle.jpg", style="width:80%"&gt;
+&lt;/center&gt;
+
+---
+##  Increased transmission of disease
+
+&lt;center&gt;
+&lt;img src= "images/disease.jpg", style="width:50%"&gt;
+&lt;/center&gt;
+
+---
+##  Increased competition
+&lt;center&gt;
+&lt;iframe src="https://giphy.com/embed/uojwNw5G9sWyI" width="480" height="292" frameBorder="0" class="giphy-embed" allowFullScreen&gt;&lt;/iframe&gt;
+&lt;/center&gt;
+
+---
+# Diet and feeding
+
+???
+Diet is source of energy - important driver of behaviours
+- data often species specific
+- no money/ not enough time to go collect this data for all species
+- how to make use of existing information
+
+
+---
+
+# Extracting information
+
+.pull-left[
+
+&lt;img src= "images/motw_book.jpg", style="width:100%"&gt;
+]
+
+
+.pull-right[
+
+&lt;img src= "images/motw_scan.png", style="width:100%"&gt;
+]
+
+???
+
+- lots of info in texts like this
+- species descriptions, collated from lots of dfferent studies/sources
+---
+
+.center[
+&lt;img src= "images/text_zoomed.png", style="width:70%"&gt;
+]
+
+???
+- info on habitat preferences and feeding preferences
+- often anecdotal and descriptive
+- how can we use this
+---
+
+# Digitizing the information
+.center[
+&lt;img src= "images/motw_scan.png", style="width:100%"&gt;
+]
+
+???
+- no digital copy 
+-scan bits - only small chunks so ok on copyright front
+- book too thick to scan
+- no hand scanner
+
+---
+
+# Digitizing the information
+
+.pull-left[
+&lt;img src= "images/tools.png", style="width:100%"&gt;
+
+]
+
+.pull-right[
+
+&lt;img src= "images/tesseract.png", style="width:100%"&gt;
+ 
+ 
+&lt;img src= "images/package.png", style="width:100%"&gt;
+ 
+]
+
+???
+
+-take picture
+-run through adobe scanner - scans to pdf
+- import to R
+- tesseract package for OCR to give digitized text that I can use
+
+---
+# Digitizing the information 
+
+
+
+
+
+```r
+clouded_leopard &lt;- tesseract::ocr(clouded_leopard.pdf)
+
+# Diardis clouded leopard	 Little is known of its habitat requirements, 
+# but longthought to be strongly associated with primmy evergreen
+# tropical rainforesl up to about 2000 m. However recent reports 
+# suggest its ecological requirements may be more flexible, with 
+# observations of cloudcd leopards in logged forests, degraded 
+# secondary forest, scrub habitats and mangrove swamps.	 A variety of 
+# terrestrial and arboreal vertebrates are reported as prey,but no
+# detailed studies with large sample sizes to date. Prey items known 
+# to include young Sambar, muntjac, mouse deer, Bearded Pig, palm Civet,
+# Hoses Langur (Praclmishnswi). ()mngutan (Pongo). porcupine, birds,
+# and fish. The cats long... 
+```
+
+--
+
+
+```
+## # A tibble: 6 x 3
+##   Predator      Habitat                    `Food and feeding`              
+##   &lt;chr&gt;         &lt;chr&gt;                      &lt;chr&gt;                           
+## 1 Diardis clou~ Little is known of its ha~ A variety of terrestrial and ar~
+## 2 Leopard       As might be predicted fro~ Leopards are adaptable generali~
+## 3 Tiger         Tigers are found in a gre~ . The list of prey species foun~
+## 4 African gold~ Habitat. Primary habitat ~ . Variety of different sized pr~
+## 5 African Wild~ . Wild Dogs occupy a rang~ . Wild Dogs mostly hunt medium—~
+## 6 Alexanders c~ Lowland 21nd montanc rain~ . Believed to feed on invertebr~
+```
+
+???
+
+- get text strings - not perfect but pretty good 
+- because of standardized format of entries easy to manipulate text to useable format
+
+
+---
+
+## Topic modelling
+
+.center[
+&lt;img src= "images/topic_model.png", style="width:100%"&gt;
+]
+
+???
+- texts are descriptive, detail otherwise potentiall missed
+- element of human bias in descriptions, extent of info available
+- topic modelling defines groupings of topics based on the co-occurences of words and the frequency with which the co-occurences arise
+---
+
+.center[
+&lt;img src= "images/mair_graphic.png", style="width:80%"&gt;
+]
+
+???
+
+A nice paper on topic modelling to inform conservation planing
+- based on published papers and uses abstracts to identify gaps in research
+
+---
+## Topic modelling
+
+
+
+.pull-left[
+📦 bibliometrix
+
+📦 slam
+
+📦 tm
+
+📦 topicmodels
+]
+
+.pull-right[
+ 106 "documents" had habitat and feeding information
+ 
+ 4982 words were contained in the corpus after stemming
+]
+
+
+```
+##   Topic 1 Topic 2 Topic 3 Topic 4 Topic 5 Topic 6 Topic 7   Topic 8
+## 1  forest    prey    hare   small    prey  insect     fox      diet
+## 2   found habitat     may    also    kill   beetl    food      area
+## 3  includ    rang    hunt  desert    larg stomach   fruit    mammal
+## 4 lowland   speci    area   south leopard     egg    bird      feed
+## 5    tree  import     one     dri     day  occurr    open     occur
+## 6  tropic    deer    high    bird   tiger  termit  season invertebr
+```
+
+???
+- simple to do in R using some packages
+- ended up with 106 species accounts
+- contained ~5000 words 
+- topics and words contained within them - some quite useful, identify things that might be missed if we only had list of species eaten by a predator
+- words like prey kill suggest some grouping based on hunting stratey
+
+
+---
+## Document relationships
+
+.center[
+&lt;img src= "images/dendrogram.png", style="width:80%"&gt;
+]
+
+???
+
+- can group species based on highest weighted topic
+
+- take output and assess relatedness of docments through heirarchical clustering beased on topic model outputs
+
+
+---
+
+## Document relationships
+
+.center[
+&lt;img src= "images/dendrogram_zoom.png", style="width:80%"&gt;
+]
+
+- Open savannah habitats
+- chase prey over distance
+
+???
+-some useful groupings
+-not phylogeny becausedogs and cats
+- similar habitat use
+- similar diet - all eat big things
+- similar ish hunting - chase over distances 
+
+---
+
+.pull-left[
+## Diet analyses
+&lt;img src= "images/kurtosis_cats.png", style="width:100%"&gt;
+]
+
+.pull-right[
+
+&lt;img src= "images/diet_kurtosis.png", style="width:100%"&gt;
+]
+
+???
+Join the text info to data from other sources such as body size to get an idea of the size of prey that make up a species diet
+
+- extract list of diet items
+- combine with body size data
+- big or small prey?
+
+- high kurtosis = platykurtic distribution = more spread
+
+- In some groups being social increases the range of diet items that can be eaten
+- start to build up a picture of how diet might impact social behaviours
+
+
+---
+
+## Habitat
+
+
+
+
+---
+class: inverse, center, middle
+
+# Get Started
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
