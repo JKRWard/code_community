@@ -19,7 +19,7 @@ mono_light(
   base_color = "#1c5253",
   header_font_google = google_font("Josefin Sans"),
   text_font_google   = google_font("Montserrat", "300", "300i"),
-  code_font_google   = google_font("Droid Mono")
+  #code_font_google   = google_font("Droid Mono")
   
 )
 
@@ -451,5 +451,5 @@ Join the text info to data from other sources such as body size to get an idea o
 ---
 class: inverse, center, middle
 
-# Get Started
+# Questions?
 
