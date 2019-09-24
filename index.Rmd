@@ -113,11 +113,20 @@ sociality only persists if benefits outweigh costs
 ---
 ##  Increased competition
 <center>
-<iframe src="https://giphy.com/embed/uojwNw5G9sWyI" width="480" height="292" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<iframe src="https://giphy.com/embed/uojwNw5G9sWyI" width="600" height="292" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 </center>
 
 ---
 # Diet and feeding
+
+.center[
+
+<iframe src = "gifs/food_energy.gif" width="800" class="giphy-embed"  height="292" frameBorder="0" allowFullScreen></iframe>
+]
+
+<!-- <center> -->
+<!-- <iframe src="https://giphy.com/embed/8awajuRjYDVE4" width="480" height="271" frameBorder="0" class="giphy-embed" allowFullScreen></iframe> -->
+<!-- </center> -->
 
 ???
 Diet is source of energy - important driver of behaviours
