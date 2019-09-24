@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
   <head>
-    <title>Code community: Modelling sociality in carnivores</title>
+    <title>Modelling sociality in carnivores</title>
     <meta charset="utf-8" />
     <link href="libs/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
@@ -10,7 +10,7 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Code community: Modelling sociality in carnivores
+# Modelling sociality in carnivores
 ## slides: jkrward.github.io/code_community
 ### 25/09/19
 
@@ -249,7 +249,7 @@ clouded_leopard &lt;- tesseract::ocr(clouded_leopard.pdf)
 ---
 
 .center[
-&lt;img src= "images/mair_graphic.png", style="width:80%"&gt;
+&lt;img src= "images/mair_model.png", style="width:100%"&gt;
 ]
 
 ???
@@ -280,14 +280,17 @@ A nice paper on topic modelling to inform conservation planing
 
 
 ```
-##     Topic 1 Topic 2 Topic 3 Topic 4 Topic 5 Topic 6 Topic 7 Topic 8
-## 1    rodent    prey     fox  reptil  forest   small    prey    area
-## 2  mountain habitat   fruit   beetl  includ  desert    kill     may
-## 3       rat   human    food stomach    also    bird    larg   speci
-## 4 grassland    deer habitat  termit     dri    also leopard    hunt
-## 5  occasion  rabbit    item     egg  record   occur   cover   often
-## 6      high    diet  season  insect  tropic     use     day    wild
+##   Topic 1 Topic 2 Topic 3 Topic 4 Topic 5   Topic 6 Topic 7 Topic 8
+## 1    prey    food    also    hare   small    rodent  includ    prey
+## 2 habitat  insect    bird    hunt     dri       rat    main    kill
+## 3   speci   beetl  rodent     may  record     grass  desert leopard
+## 4    deer   snake   south     one  observ      wolv     spp    larg
+## 5    rang  termit   found    open  desert grassland   found    wild
+## 6   human     egg    prey    area    area      rang    arid     day
 ```
+
+- Descriptive topics
+- Link to natural history
 
 ???
 - simple to do in R using some packages
@@ -303,6 +306,10 @@ A nice paper on topic modelling to inform conservation planing
 .center[
 &lt;img src= "images/dendrogram.png", style="width:80%"&gt;
 ]
+
+Species relationships based on topic model outputs
+- Red = social
+- Black = not social
 
 ???
 
@@ -334,6 +341,9 @@ A nice paper on topic modelling to inform conservation planing
 .pull-left[
 ## Diet analyses
 &lt;img src= "images/kurtosis_cats.png", style="width:100%"&gt;
+
+- Quantify the spread of hte distribution by calculating kurtosis
+- Overall higher kurtosis amongst social than non social species in this family
 ]
 
 .pull-right[
@@ -379,7 +389,11 @@ Join the text info to data from other sources such as body size to get an idea o
 &lt;iframe src="https://giphy.com/embed/1xkMJIvxeKiDS" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen&gt;&lt;/iframe&gt;
 ]
 
+???
 
+- Acessing MODIS satelite data using the R package - good for small querys
+- not for 3 million points 
+- very slow 
 ---
 ## Habitat data
 
@@ -399,6 +413,11 @@ Join the text info to data from other sources such as body size to get an idea o
 Speedy once you know what you are doing
 ]
 
+???
+
+- GEE very powerful but you need to know JavaScript
+- This is why code community is important, I did'nt know anyone that had done this so struggled on my own 
+
 ---
 
 ## Synthesis with SEM
@@ -406,6 +425,13 @@ Speedy once you know what you are doing
 .center[
 &lt;img src= "images/sem_out_diagram.png", style="width:100%"&gt;
 ]
+
+???
+- Take all of these bits of data and synthesise into formal model
+- Using SEM
+- assess covariance including indirect and direct relationships
+- gives idea of how these processes are linked to variable of interest
+- can start to understand the strengths of relationships important in driving social behaviours
 
 ---
 class: inverse, center, middle

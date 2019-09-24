@@ -1,5 +1,5 @@
 ---
-title: "Code community: Modelling sociality in carnivores"
+title: "Modelling sociality in carnivores"
 subtitle: "slides: jkrward.github.io/code_community"
 date: "25/09/19"
 output:
@@ -249,7 +249,7 @@ head(txts)
 ---
 
 .center[
-<img src= "images/mair_graphic.png", style="width:80%">
+<img src= "images/mair_model.png", style="width:100%">
 ]
 
 ???
@@ -362,6 +362,9 @@ terms_df %>% select(-9, -10) %>% head(.)
 
 ```
 
+- Descriptive topics
+- Link to natural history
+
 ???
 - simple to do in R using some packages
 - ended up with 106 species accounts
@@ -376,6 +379,10 @@ terms_df %>% select(-9, -10) %>% head(.)
 .center[
 <img src= "images/dendrogram.png", style="width:80%">
 ]
+
+Species relationships based on topic model outputs
+- Red = social
+- Black = not social
 
 ???
 
@@ -407,6 +414,9 @@ terms_df %>% select(-9, -10) %>% head(.)
 .pull-left[
 ## Diet analyses
 <img src= "images/kurtosis_cats.png", style="width:100%">
+
+- Quantify the spread of hte distribution by calculating kurtosis
+- Overall higher kurtosis amongst social than non social species in this family
 ]
 
 .pull-right[
@@ -452,7 +462,11 @@ Join the text info to data from other sources such as body size to get an idea o
 <iframe src="https://giphy.com/embed/1xkMJIvxeKiDS" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 ]
 
+???
 
+- Acessing MODIS satelite data using the R package - good for small querys
+- not for 3 million points 
+- very slow 
 ---
 ## Habitat data
 
@@ -472,6 +486,11 @@ Join the text info to data from other sources such as body size to get an idea o
 Speedy once you know what you are doing
 ]
 
+???
+
+- GEE very powerful but you need to know JavaScript
+- This is why code community is important, I did'nt know anyone that had done this so struggled on my own 
+
 ---
 
 ## Synthesis with SEM
@@ -479,6 +498,13 @@ Speedy once you know what you are doing
 .center[
 <img src= "images/sem_out_diagram.png", style="width:100%">
 ]
+
+???
+- Take all of these bits of data and synthesise into formal model
+- Using SEM
+- assess covariance including indirect and direct relationships
+- gives idea of how these processes are linked to variable of interest
+- can start to understand the strengths of relationships important in driving social behaviours
 
 ---
 class: inverse, center, middle
