@@ -203,7 +203,7 @@ head(txts)
 ---
 
 .center[
-<img src= "images/Mair_etal_graphic.png", style="width:80%">
+<img src= "images/mair_graphic.png", style="width:80%">
 ]
 
 ---
