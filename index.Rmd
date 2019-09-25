@@ -47,7 +47,9 @@ mono_light(
 ---
 
 # Social carnivores
-
+<center>
+<img src= "images/social_mammals.png", style="width:100%">
+</center>
 
 ???
 
@@ -62,6 +64,8 @@ mono_light(
 class: inverse, center, middle
 
 # Why be social?
+
+
 
 ???
 
@@ -119,10 +123,9 @@ sociality only persists if benefits outweigh costs
 ---
 # Diet and feeding
 
-.center[
-
-<iframe src = "gifs/food_energy.gif" width="800" class="giphy-embed"  height="292" frameBorder="0" allowFullScreen></iframe>
-]
+<center>
+<iframe src = "gifs/food_energy.gif" width="800" class="giphy-embed"  height="492" frameBorder="0" allowFullScreen></iframe>
+</center>
 
 <!-- <center> -->
 <!-- <iframe src="https://giphy.com/embed/8awajuRjYDVE4" width="480" height="271" frameBorder="0" class="giphy-embed" allowFullScreen></iframe> -->
@@ -411,6 +414,11 @@ Species relationships based on topic model outputs
 - Open savannah habitats
 - chase prey over distance
 
+.center[
+<img src= "images/lion_cheetah_wilddog.png", style="width:100%">
+]
+
+
 ???
 -some useful groupings
 -not phylogeny becausedogs and cats
@@ -451,6 +459,11 @@ Join the text info to data from other sources such as body size to get an idea o
 ---
 
 ## Habitat
+
+
+<center>
+<img src= "images/habitats.png", style="width:80%">
+</center>
 
 ???
 - determines what animals can survive
